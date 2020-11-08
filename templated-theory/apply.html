@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Python Flask Hello Web App</title>
+    <title>Covid Relief Box</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,19 +12,38 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <link href="https://chromium.googlesource.com/external/github.com/twbs/bootstrap/+/v3.3.4/docs/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
 
-    <script>
+    <script  src="https://api.apispreadsheets.com/data/3201/"  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="  crossorigin="anonymous"></script>
 
-    </script>
+    
+<script>
+function SubForm (){
+    $.ajax({
+        url:'https://api.apispreadsheets.com/data/3203/',
+        type:'post',
+        data:$("#myForm").serializeArray(),
+        success: function(){
+          alert("Form Data Submitted, application progress will be emailed")
+        },
+        error: function(){
+          alert("There was an error, please try again")
+        }
+    });
+}
+var searchIDs = $("input:checkbox:checked").map(function(){
+        return this.value;
+    }).toArray();
+
+</script>
+
 
 </head>
 <body>
-
     <div class="container">
         <div class="header">
             <nav>
                 <ul class="nav nav-pills pull-right">
                     <li role="presentation" class="active">
-                        <a href="#index.html">Home</a>
+						<a href="index.html">Home</a>
                     </li>
 
                 </ul>
@@ -33,57 +52,78 @@
         </div>
         <br />
         <div class="jumbotron">
+            <form id="myForm">
+
             <h1>Eligibility Quiz</h1>
             <p class="lead">Enter your Personal Information:</p>
             <br>
             <form action="/hello" method="post">
-                First Name:<br /><input type="text" name="first_name">
+                <form id="myForm">
+                    <label>Full Name</label>
+                    <br/>
+                    <input name="full_name" />
+                    <br/>
+                    <br/>
+
+                    <label>Email</label>
+                    <br/>
+                    <input name="email" />
+                    <br/>
+                    <br />
+
+
+
+
+                    <label>Number of children under 18</label>
+                    <br/>
+                    
+                    <input type="radio" id="children" name="children" value="0" /> 0<br/>
+                    <input type="radio" id="children" name="children" value="1" /> 1<br/>
+                    <input type="radio" id="children" name="children" value="2" /> 2<br/>
+                    <input type="radio" id="children" name="children" value="3" /> 3<br/>
+                    <input type="radio" id="children" name="children" value="4" /> 4+<br/>
+                    <br/>
+                    <br />
+
+                    <label>Number of elderly living in the household</label>
+                    <br/>
+                    <input type="radio" id="elderly" name="elderly" value="0" /> 0<br/>
+                    <input type="radio" id="elderly" name="elderly" value="1" /> 1<br/>
+                    <input type="radio" id="elderly" name="elderly" value="2" /> 2<br/>
+                    <input type="radio" id="elderly" name="elderly" value="3" /> 3<br/>
+                    <input type="radio" id="elderly" name="elderly" value="4" /> 4+<br/>
+
+
                 <br />
+                <label>Check all the health conditions that apply to you (most at risk for Covid-19 based on CDC guidelines) </label>
                 <br />
-                Last Name:<br /><input type="text" name="last_name" />
+
+                <input type="checkbox" value="1" name = "health" /> Asthma<br/>
+                <input type="checkbox" value="1" name = "health" />  Cerebrovascular disease <br/>
+                <input type="checkbox" value="1" name = "health"/>  Cystic fibrosis<br/>
+                <input type="checkbox" value="1" name = "health" /> Hypertension<br/>
+                <input type="checkbox" value="1" name = "health" />  Immunocompromised state<br/>
+                <input type="checkbox" value="1" name = "health" /> Dementia<br/>
+                <input type="checkbox" value="1" name = "health" /> Liver disease<br/>
+                <input type="checkbox" value="1" name = "health" /> Overweight (BMI > 25)<br/>
+                <input type="checkbox" value="1" name = "health" /> Pulmonary fibrosis<br/>
+                <input type="checkbox" value="1" name = "health" /> Thalassemia<br/>
+                <input type="checkbox" value="1" name = "health" /> Type 1 diabetes <br/>
+
                 <br />
+
+                <label>Check all financial information that applies to you    </label>
                 <br />
-                Email:<br /><input type="text" name="email">
-                <br />
-                <br />
-                <br />
-                <p class="lead">Check all family information that applies to you:</p>
-                <p style="font-weight: bold; font-size: medium;">Number of children under 18:</p>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioKidOptions" id="inlineRadioKid0" value="option0">
-                    <label class="form-check-label" for="inlineRadioKid0">0</label>
-                    &emsp;
-                    <input class="form-check-input" type="radio" name="inlineRadioKidOptions" id="inlineRadioKid1" value="option1">
-                    <label class="form-check-label" for="inlineRadioKid1">1</label>
-                    &emsp;
-                    <input class="form-check-input" type="radio" name="inlineRadioKidOptions" id="inlineRadioKid2" value="option2">
-                    <label class="form-check-label" for="inlineRadioKid2">2</label>
-                    &emsp;
-                    <input class="form-check-input" type="radio" name="inlineRadioKidOptions" id="inlineRadioKid3" value="option3">
-                    <label class="form-check-label" for="inlineRadioKid3">3</label>
-                    &emsp;
-                    <input class="form-check-input" type="radio" name="inlineRadioKidOptions" id="inlineRadioKid4" value="option4">
-                    <label class="form-check-label" for="inlineRadioKid4">4+</label>
-                </div>
-                <p style="font-weight: bold; font-size: medium;">Number of elderly living in the household:</p>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOldOptions" id="inlineRadioOld0" value="option0">
-                    <label class="form-check-label" for="inlineRadioOld0">0</label>
-                    &emsp;
-                    <input class="form-check-input" type="radio" name="inlineRadioOldOptions" id="inlineRadioOld1" value="option1">
-                    <label class="form-check-label" for="inlineRadioOld1">1</label>
-                    &emsp;
-                    <input class="form-check-input" type="radio" name="inlineRadioOldOptions" id="inlineRadioOld2" value="option2">
-                    <label class="form-check-label" for="inlineRadioOld2">2</label>
-                    &emsp;
-                    <input class="form-check-input" type="radio" name="inlineRadioOldOptions" id="inlineRadioOld3" value="option3">
-                    <label class="form-check-label" for="inlineRadioOld3">3</label>
-                    &emsp;
-                    <input class="form-check-input" type="radio" name="inlineRadioOldOptions" id="inlineRadioOld4" value="option4">
-                    <label class="form-check-label" for="inlineRadioOld4">4+</label>
-                </div>
-                <br />
-                <p class="lead">Check all financial information that applies to you:</p>
+
+                <input type="checkbox" value="1" name = "status" /> Income under $41,000                <br/>
+                <input type="checkbox" value="1" name = "status"/>   Support of a dependent relative who lives in the same household                <br/>
+                <input type="checkbox" value="1" name = "status"/>  Student enrolled at a university or college <br/>
+                <input type="checkbox" value="1" name = "status"/>  Small business owner (less than 100 employees)                <br/>
+                <input type="checkbox" value="1" name = "status"/>   Lost employment due to Covid-19 <br/>
+
+                <!--
+                <label>Check all financial information that applies to you</label>
+
                 <div class="form-check container">
                     <input class="form-check-input" type="checkbox" value="" id="income">
                     <label class="form-check-label" for="income">
@@ -115,77 +155,83 @@
                     </label>
                 </div>
                 <br />
-                <p class="lead">Check all that health conditions that apply to you (most at risk for Covid-19 based on CDC guidelines):</p>
+                <label>Check all that health conditions that apply to you (most at risk for Covid-19 based on CDC guidelines)</label>
+
                 <div class="form-check container">
-                    <input class="form-check-input" type="checkbox" value="" id="asthma">
+                    <input class="form-check-input"  type="checkbox" value="" id="asthma">
                     <label class="form-check-label" for="health">
                         Asthma
                     </label>
                 </div>
                 <div class="form-check container">
-                    <input class="form-check-input" type="checkbox" value="" id="cerebrovascular">
+                    <input class="form-check-input"  type="checkbox" value="" id="cerebrovascular">
                     <label class="form-check-label" for="cerebrovascular">
                         Cerebrovascular disease
                     </label>
                 </div>
                 <div class="form-check container">
-                    <input class="form-check-input" type="checkbox" value="" id="cystic">
+                    <input class="form-check-input"  type="checkbox" value="" id="cystic">
                     <label class="form-check-label" for="cystic">
                         Cystic fibrosis
                     </label>
                 </div>
                 <div class="form-check container">
-                    <input class="form-check-input" type="checkbox" value="" id="hypertension">
+                    <input class="form-check-input"  type="checkbox" value="" id="hypertension">
                     <label class="form-check-label" for="hypertension">
                         Hypertension
                     </label>
                 </div>
                 <div class="form-check container">
-                    <input class="form-check-input" type="checkbox" value="" id="immunocompromised">
+                    <input class="form-check-input" name="health" type="checkbox" value="" id="immunocompromised">
                     <label class="form-check-label" for="immunocompromised">
                         Immunocompromised state
                     </label>
                 </div>
                 <div class="form-check container">
-                    <input class="form-check-input" type="checkbox" value="" id="dementia">
+                    <input class="form-check-input"  type="checkbox" value="" id="dementia">
                     <label class="form-check-label" for="dementia">
                         Dementia
                     </label>
                 </div>
                 <div class="form-check container">
-                    <input class="form-check-input" type="checkbox" value="" id="liver">
+                    <input class="form-check-input"  type="checkbox" value="" id="liver">
                     <label class="form-check-label" for="liver">
                         Liver disease
                     </label>
                 </div>
                 <div class="form-check container">
-                    <input class="form-check-input" type="checkbox" value="" id="overweight">
+                    <input class="form-check-input"  type="checkbox" value="" id="overweight">
                     <label class="form-check-label" for="overweight">
                         Overweight (BMI > 25, but < 30)
                     </label>
                 </div>
                 <div class="form-check container">
-                    <input class="form-check-input" type="checkbox" value="" id="pulmonary">
+                    <input class="form-check-input"  type="checkbox" value="" id="pulmonary">
                     <label class="form-check-label" for="pulmonary">
                         Pulmonary fibrosis
                     </label>
                 </div>
                 <div class="form-check container">
-                    <input class="form-check-input" type="checkbox" value="" id="thalassemia">
+                    <input class="form-check-input"  type="checkbox" value="" id="thalassemia">
                     <label class="form-check-label" for="thalassemia">
                         Thalassemia
                     </label>
                 </div>
                 <div class="form-check container">
-                    <input class="form-check-input" type="checkbox" value="" id="diabetes">
+                    <input class="form-check-input"  type="checkbox" value="" id="diabetes">
                     <label class="form-check-label" for="diabetes">
                         Type 1 diabetes
                     </label>
                 </div>
                 <br />
-                <input class="btn btn-lg btn-success" type="submit" name="form" value="Submit" />
+                -->
+                <br />
+                <br />
+
             </form>
-        </div>
+
+            <button onclick="SubForm()" onclick ="location.href = 'index.html';" >Submit</button>
+            </div>
 
         <footer class="footer">
             <p>HackHer 2020, Simon Bard, Asher Song, Nathan Zhao, Tristan Underwood</p>
