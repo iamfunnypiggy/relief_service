@@ -9,7 +9,7 @@
 		<title>Eligibility - CRB</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" />
 	</head>
 	<body class="subpage">
 
@@ -18,9 +18,9 @@
 				<div class="inner">
 					<a href="index.html" class="logo">Covid Relief Box</a>
 					<nav id="nav">
-						<a href="index.html">About</a>
-						<a href="generic.html">Apply</a>
-						<a href="elements.html">Donate</a>
+						<a href="/about">About</a>
+						<a href="/apply">Apply</a>
+						<a href="/donate">Donate</a>
 					</nav>
 					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 				</div>

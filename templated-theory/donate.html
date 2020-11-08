@@ -1,8 +1,34 @@
 <!DOCTYPE HTML>
-
+<!--
+	Theory by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
 <html>
 	<head>
 		<title>Donation - CRB</title>
+
+
+		<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script>
+function SubForm (){
+    $.ajax({
+        url:'https://api.apispreadsheets.com/data/3214/',
+        type:'post',
+        data:$("#myForm").serializeArray(),
+        success: function(){
+          alert("Form Data Submitted :)")
+        },
+        error: function(){
+          alert("There was an error :(")
+        }
+    });
+}
+</script>
+
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -14,70 +40,73 @@
 				<div class="inner">
 					<a href="index.html" class="logo">Covid Relief Box</a>
 					<nav id="nav">
-						<a href="about.html">About</a>
-						<a href="apply.html">Apply</a>
-						<a href="donate.html">Donate</a>
-					</nav>
+						<a href="/about">About</a>
+						<a href="/apply">Apply</a>
+						<a href="/donate">Donate</a>
+							</nav>
 					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 				</div>
 			</header>
 
-		<!-- Three -->
-			<section id="three" class="wrapper">
+		<!-- Main -->
+			<section id="main" class="wrapper">
 				<div class="inner">
 					<header class="align-center">
-						<h2>Donations</h2>
-						<p>In times of need, we must help one another.</p>
+						<h2>Donate</h2>
 					</header>
-					<p>***Little paragraph of what the packages contain, where the donated money will go***</p>
-					<p>Any donations will help</p>
 
-					<hr class="major" />
+				<!-- Content -->
+				<h2 id="content">Donations</h2>
+				<p> Donations to Covid Releif Box will all go towards supporting people and business in need. Companies that donate will be 
+					listed as a contributer on our website. Individual donations will be reviewed individually. Merchandise is also available 
+					for purchase, 100% of the proceeds from merch will be used to further fund Covid Releif Box. 
+				</p>
+				<div class="row">
+					<div class="6u 12u$(small)">
+						<h2>Direct Donations</h2>
 
-					<!-- Elements -->
-					<h2 id="elements">Donate now</h2>
+						<form id="myForm">
+							<label>Full Name/Company</label>
+							<input name="full_name" />
+							<br/>
+							<br/>
+							<label>Email</label>
+							<input name="email" />
+							<br/>
+							<br/>
+							<label>Donation amount</label>
+							<input name="donation" />
+							<br/>
+							<br>
 
-					<footer>
-						<a href="#" class="button special">Donate</a>
-					</footer>
+						</form>
+						<button onclick="SubForm()">Submit</button>
+				
+						<br/>
 
-					<!--<div class="flex flex-2">
-						<article>
-							<div class="image fit">
-								<img src="images/pic01.jpg" alt="Pic 01" />
-							</div>
-							<header>
-								<h3>Praesent placerat magna</h3>
-							</header>
-							<p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor lorem ipsum.</p>
-							<footer>
-								<a href="#" class="button special">More</a>
-							</footer>
-						</article>
-						<article>
-							<div class="image fit">
-								<img src="images/pic02.jpg" alt="Pic 02" />
-							</div>
-							<header>
-								<h3>Fusce pellentesque tempus</h3>
-							</header>
-							<p>Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel, euismod vel, velit. Pellentesque egestas sem. Suspendisse commodo ullamcorper magna non comodo sodales tempus.</p>
-							<footer>
-								<a href="#" class="button special">More</a>
-							</footer>
-						</article>
-					</div> -->
+					</div>
+					<h2 id="content">Merchandise</h2>
+						
+
+					<br>
+
 				</div>
-			</section>
+
+
+
+						 
+
+
+					
+
+
+
+
 
 		<!-- Footer -->
 			<footer id="footer">
 				<div class="inner">
-					<div class="flex">
-						<div class="copyright">
-							HackHer 2020, Simon Bard, Asher Song, Nathan Zhao, Tristan Underwood</a>.
-						</div>
-					</div>
+					<p>HackHer 2020, Simon Bard, Asher Song, Nathan Zhao, Tristan Underwood<br>
 				</div>
 			</footer>
 
