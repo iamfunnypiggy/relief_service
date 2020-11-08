@@ -1,6 +1,8 @@
 # relief_service
-index1 is website main page
+home.html is website main page
 
-index2 is application page
+eligibility.html is criteria page
 
-index4 is donations page
+apply.html is application form
+
+donate.html is donations page
